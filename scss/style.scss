@@ -1,0 +1,48 @@
+@import "components/variables";
+@import "components/font";
+@import "components/cards";
+@import "components/footer";
+@import "components/visitas";
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: $brand-blue;
+}
+
+main {
+    width: 80%;
+    height: 100dvh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btnInicio {
+    margin-top: 3rem;
+    padding: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: $primary-white;
+    border: none;
+    color: $brand-blue;
+    border-radius: 1000px;
+
+    &:hover {
+        background-color: $brand-yellow;
+        color: $primary-black;
+    }
+
+}

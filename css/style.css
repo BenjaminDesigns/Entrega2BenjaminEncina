@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+h1, h2, h3, h4, p, a {
+  font-family: Manrope;
+  color: #f7f7f2;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.paquetes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tarjeta {
+  background: #FC5938;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 30dvw;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tarjeta .icono {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.tarjeta h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+.tarjeta .valor {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.tarjeta .descripcion {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.tarjeta .btn-anadir {
+  background: #f7f7f2;
+  color: #FC5938;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.tarjeta .btn-anadir:hover {
+  background: #FFE053;
+}
+
+footer {
+  margin-top: 4rem;
+  margin-bottom: 30dvh;
+}
+
+.total {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 4rem;
+}
+
+.btn-enviar {
+  font-size: 1.5rem;
+  display: block;
+  margin: 1rem auto;
+  background: #f7f7f2;
+  color: #2746DF;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn-enviar:hover {
+  background: #FC5938;
+}
+
+.contador-visitas {
+  padding: 20px;
+  background-color: #2746DF;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #2746DF;
+}
+
+main {
+  width: 80%;
+  height: 100dvh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btnInicio {
+  margin-top: 3rem;
+  padding: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #f7f7f2;
+  border: none;
+  color: #2746DF;
+  border-radius: 1000px;
+}
+.btnInicio:hover {
+  background-color: #FFE053;
+  color: #141414;
+}
+
+/*# sourceMappingURL=style.css.map */

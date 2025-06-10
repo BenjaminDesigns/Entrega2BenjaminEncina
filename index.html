@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eccco™ studio</title>
+    <link rel="icon" href="imgs/favicon.png"> 
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <div class="contador-visitas">
+        <p class="contador-texto">Visitas totales: 0</p>
+    </div>
+
+    <main>
+        <h3>Bienvenid@...</h3>
+        <p>Este simulador de precios busca mostrarle al usuario las distintas opciones de servicios a los que puede acceder, y le permite escoger uno de los paquetes para realizar una cotización.</p>
+        <img src="imgs/wordmark_full.svg" alt="eccco ™ studio wordmark logo">
+        <a href="#cards"><button class="btnInicio">Ver nuestros servicios</button></a>
+    </main>
+
+    <section class="paquetes" id="cards">
+    <div class="tarjeta" data-paquete="identidad">
+      <div class="icono">🎨</div>
+      <h4>Identidad Gráfica</h4>
+      <p class="valor">$250.000 CLP</p>
+      <p class="descripcion">Diseño de logotipo, paleta de colores y más.</p>
+      <button class="btn-anadir">Añadir</button>
+    </div>
+
+    <div class="tarjeta" data-paquete="web">
+      <div class="icono">💻</div>
+      <h4>Desarrollo Web</h4>
+      <p class="valor">$250.000 CLP</p>
+      <p class="descripcion">Maquetación y diseño responsivo en código.</p>
+      <button class="btn-anadir">Añadir</button>
+    </div>
+
+    <div class="tarjeta" data-paquete="completo">
+        <div class="icono">🚀</div>
+            <h4>Pack Completo</h4>
+            <p class="valor">$500.000 CLP</p>
+            <p class="descripcion">Identidad + Web + Adaptaciones y extras.</p>
+            <button class="btn-anadir">Añadir</button>
+        </div>
+    </section>
+
+  <footer>
+    <h2 class="total">$0 CLP</h2>
+    <button class="btn-enviar">Enviar cotización</button>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+footer {
+    margin-top: 4rem;
+    margin-bottom: 30dvh;
+
+    }.total {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 4rem;
+    }
+
+    .btn-enviar {
+        font-size: 1.5rem;
+        display: block;
+        margin: 1rem auto;
+        background: $primary-white;
+        color: $brand-blue;
+        padding: 0.6rem 1.5rem;
+        border: none;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+            background: $brand-red;
+        }
+}
+
+
+    
