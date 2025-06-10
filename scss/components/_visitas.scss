@@ -1,7 +1,9 @@
 .contador-visitas {
-    padding: 20px;
+    padding: 1rem;
     background-color: $brand-blue;
     position: fixed;
     top: 20px;
     left: 20px;
+    border: 1px solid $primary-white;
+    border-radius: 999px;
 }

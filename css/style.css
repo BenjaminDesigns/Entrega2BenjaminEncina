@@ -34,8 +34,9 @@ h3 {
   align-items: center;
 }
 .tarjeta .icono {
-  font-size: 2.5rem;
+  max-width: 30%;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .tarjeta h4 {
   margin-bottom: 0.5rem;
@@ -55,6 +56,7 @@ h3 {
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 999px;
+  margin-bottom: 1rem;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -90,11 +92,13 @@ footer {
 }
 
 .contador-visitas {
-  padding: 20px;
+  padding: 1rem;
   background-color: #2746DF;
   position: fixed;
   top: 20px;
   left: 20px;
+  border: 1px solid #f7f7f2;
+  border-radius: 999px;
 }
 
 html {

@@ -10,9 +10,9 @@ if (!nombre) {
 document.querySelector("h3").textContent = `Bienvenid@, ${nombre}`;
 
 const paquetes = {
-  identidad: 250000,
-  web: 250000,
-  completo: 500000,
+  identidad: 500000,
+  web: 500000,
+  rebranding: 250000,
 };
 
 document.querySelectorAll(".btn-anadir").forEach(boton => {
