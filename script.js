@@ -3,11 +3,11 @@ let total = 0;
 let paquetesAgregados = [];
 
 if (!nombre) {
-  nombre = prompt("¿Cuál es tu nombre?");
+  nombre = prompt("¿Cómo te llamas?");
   localStorage.setItem("nombre", nombre);
 }
 
-document.querySelector("h3").textContent = `Bienvenid@, ${nombre}`;
+document.querySelector("h3").textContent = `Bienvenid@, ${nombre}👋`;
 
 const paquetes = {
   identidad: 500000,
@@ -20,8 +20,8 @@ document.querySelectorAll(".btn-anadir").forEach(boton => {
     const tarjeta = boton.closest(".tarjeta");
     const tipo = tarjeta.getAttribute("data-paquete");
 
-    if (paquetesAgregados.includes(tipo)) {
-      alert("No puedes sumar otra vez este paquete");
+    if (paquetesAgregados.includes(tipo) === true) {
+      alert("Ya seleccionaste este paquete");
       return;
     }
 
@@ -37,8 +37,8 @@ document.querySelector(".btn-enviar").onclick = () => {
 
 const contadorTexto = document.querySelector('.contador-texto');
 
+// Me parecía mejor añadir esto en vez de tener que limpiar mi JSON cada vez que quería probar si localStorage funcionaba bien
 let visitas = localStorage.getItem('visitas');
-
 if (!visitas) {
   visitas = 0;
 }

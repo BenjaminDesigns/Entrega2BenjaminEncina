@@ -19,7 +19,8 @@ h3 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 2rem;
+  padding-top: 8rem;
+  min-width: 80%;
 }
 
 .tarjeta {
@@ -40,25 +41,26 @@ h3 {
 }
 .tarjeta h4 {
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
 .tarjeta .valor {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 .tarjeta .descripcion {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 .tarjeta .btn-anadir {
   background: #f7f7f2;
   color: #FC5938;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   border-radius: 999px;
   margin-bottom: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 1.5rem;
 }
 .tarjeta .btn-anadir:hover {
   background: #FFE053;
