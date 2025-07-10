@@ -1,4 +1,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 90vw;
+  background-color: #f7f7f2;
+  border-radius: 16px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  padding: 2rem 1.5rem;
+}
+.popup h3 {
+  color: #141414;
+  font-weight: BOLD;
+  padding-bottom: 1rem;
+}
+.popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+.popup form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.popup form input:focus {
+  border-color: #4c4ffd;
+  outline: none;
+}
+.popup form button {
+  padding: 0.75rem;
+  background-color: #2746DF;
+  color: #f7f7f2;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.popup form button:hover {
+  background-color: #4c4ffd;
+}
+
+.contador-visitas {
+  padding: 1rem;
+  background-color: #2746DF;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  border: 1px solid #f7f7f2;
+  border-radius: 999px;
+}
+
 h1, h2, h3, h4, p, a {
   font-family: Manrope;
   color: #f7f7f2;
@@ -93,16 +152,6 @@ footer {
   background: #FC5938;
 }
 
-.contador-visitas {
-  padding: 1rem;
-  background-color: #2746DF;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  border: 1px solid #f7f7f2;
-  border-radius: 999px;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -141,6 +190,10 @@ main {
 .btnInicio:hover {
   background-color: #FFE053;
   color: #141414;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

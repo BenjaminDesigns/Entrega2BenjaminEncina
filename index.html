@@ -12,18 +12,29 @@
 
 <body>
 
-    <div class="contador-visitas">
+    <div id="loginContainer" class="popup">
+      <h3>¿Cómo te llamas?</h3>
+      <form id="loginForm">
+        <input type="text" id="nombreInput" placeholder="Ingresa tu nombre" required />
+        <button type="submit">Ingresar</button>
+      </form>
+    </div>
+
+
+    <div class="contador-visitas hidden">
         <p class="contador-texto">Visitas totales: 0</p>
     </div>
 
-    <main>
+    <main class="hidden">
         <h3>Bienvenid@...</h3>
-        <p>Este simulador de precios busca mostrarle al usuario las distintas opciones de servicios a los que puede acceder, y le permite escoger uno de los paquetes para realizar una cotización.</p>
+        <p>Somos una agencia creativa freelance basada en Chile, especializada en Branding, diseño UX/UI, Product Design, y desarrollo de Front-End.
+        <br>
+        eccco™ - es resonancia visual.</p>
         <img src="imgs/wordmark_full.svg" alt="eccco ™ studio wordmark logo">
         <a href="#cards"><button class="btnInicio">Ver nuestros servicios</button></a>
     </main>
 
-    <section class="paquetes" id="cards">
+    <section class="paquetes hidden" id="cards">
     <div class="tarjeta" data-paquete="identidad">
       <img src="icons/design.svg" class="icono" alt="Ícono de diseño">
       <h4>Identidad Gráfica</h4>
@@ -49,7 +60,7 @@
         </div>
     </section>
 
-  <footer>
+  <footer class="hidden">
     <h2 class="total">$0 CLP</h2>
     <button class="btn-enviar">Enviar cotización</button>
   </footer>
