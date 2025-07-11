@@ -19,6 +19,8 @@ let paquetesAgregados = [];
 
 // ---------------------------------------- //
 
+
+// Tal vez haya un método más elegante para esto, pero no lo descubrí ;( 
 function mostrarContenido() {
   loginContainer.remove();
   mainContent.classList.remove("hidden");
@@ -44,7 +46,7 @@ loginForm.addEventListener("submit", (e) => {
       duration: 3000,
       gravity: "top",
       position: "center",
-      backgroundColor: "#e63946",
+      backgroundColor: "#1b1b1bff",
     }).showToast();
     return;
   }
