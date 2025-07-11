@@ -6,11 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let proyectosData = [];
 
   function mostrarTodosLosProyectos() {
+    const existingOverlay = document.querySelector(".overlay-activo");
+    const existingWrapper = document.querySelector(".proyecto-detalle-wrapper");
+    if (existingOverlay) existingOverlay.remove();
+    if (existingWrapper) existingWrapper.remove();
+
     seccionProyectos.innerHTML = "";
 
-    proyectosData.forEach((proyecto) => {
+    proyectosData.forEach((proyecto, index) => {
       const card = document.createElement("div");
       card.classList.add("card-proyecto");
+      card.style.animationDelay = `${0.3 + index * 0.2}s`;
+      card.style.opacity = "0";
 
       card.innerHTML = `
         <img src="${proyecto.imagen}" alt="${proyecto.nombre}" />
@@ -19,9 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       seccionProyectos.appendChild(card);
+      void card.offsetWidth;
     });
-
-// ---------------------------------------------- //
 
     document.querySelectorAll(".btn-ver-mas").forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -33,7 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function mostrarProyectoDetalle(id) {
     const proyecto = proyectosData.find((p) => p.id == id);
+    if (!proyecto) return;
+
     seccionProyectos.innerHTML = "";
+
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay-activo");
+    document.body.appendChild(overlay);
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("proyecto-detalle-wrapper");
 
     const detalle = document.createElement("div");
     detalle.classList.add("proyecto-detalle");
@@ -45,12 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
       <button class="btn-volver">Volver</button>
     `;
 
-    seccionProyectos.appendChild(detalle);
+    wrapper.appendChild(detalle);
+    document.body.appendChild(wrapper);
 
-    document.querySelector(".btn-volver").addEventListener("click", mostrarTodosLosProyectos);
+    detalle.querySelector(".btn-volver").addEventListener("click", () => {
+      wrapper.remove();
+      overlay.remove();
+      mostrarTodosLosProyectos();
+    });
   }
-
-// ---------------------------------------------- //
 
   btnProyectos.addEventListener("click", () => {
     seccionProyectos.classList.remove("hidden");
@@ -66,8 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
           proyectosCargados = true;
           mostrarTodosLosProyectos();
         })
-        .catch((err) => {
-          console.error("Error:", err);
+        .catch(() => {
           seccionProyectos.innerHTML = "<p>No se pudieron cargar los proyectos.</p>";
         });
     } else {

@@ -1,9 +1,25 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  margin: 1rem 1.5rem;
+  justify-content: flex-end;
+  height: 3rem;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+
+  .logo img {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    z-index: 3;
+    padding: 2rem 3rem;
+    background-color: $brand-blue;
+    border: 1px solid $primary-white;
+    border-radius: 100px;
+  }
 
   .nav-buttons {
     flex: 1;
@@ -21,5 +37,15 @@
   .navbar a {
     font-size: 0.8rem;
     text-align: center;
+  }
+
+  .logo img {
+    width: 150px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .logo img { 
+    display: none;
   }
 }

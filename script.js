@@ -11,6 +11,7 @@ const footer = document.querySelector("footer");
 const contador = document.querySelector(".contador-visitas");
 const totalElemento = document.querySelector(".total");
 const navbar = document.querySelector(".navbar");
+const nosotros = document.querySelector(".Nosotros");
 const btnScroll = document.querySelector(".btnScrollTop");
 
 let total = 0;
@@ -25,6 +26,7 @@ function mostrarContenido() {
   proyectosSection.classList.remove("hidden");
   footer.classList.remove("hidden");
   contador.classList.remove("hidden");
+  nosotros.classList.remove("hidden");
   navbar.classList.remove("hidden");
   btnScroll.classList.remove("hidden");
   document.querySelector("main h3").textContent = `Bienvenid@, ${nombre} 👋`;
@@ -55,6 +57,9 @@ loginForm.addEventListener("submit", (e) => {
 // ---------------------------------------- //
 
 document.querySelector(".btn-enviar").addEventListener("click", () => {
+  const emailInput = document.querySelector("#email");
+  const email = emailInput.value.trim();
+
   if (total === 0) {
     Toastify({
       text: "Primero debes añadir un paquete.",
@@ -66,11 +71,22 @@ document.querySelector(".btn-enviar").addEventListener("click", () => {
     return;
   }
 
+  if (email === "" || !email.includes("@")) {
+    Toastify({
+      text: "Por favor, ingresa un correo válido.",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      backgroundColor: "#e63946",
+    }).showToast();
+    return;
+  }
+
   totalElemento.textContent = "¡Cotización enviada con éxito!";
 
   Swal.fire({
     title: "¡Cotización Enviada!",
-    text: "Gracias por confiar en eccco™ studio.",
+    text: `Gracias por confiar en eccco™ studio.\nTe responderemos a: ${email}`,
     icon: "success",
     confirmButtonText: "Cerrar",
   });
@@ -82,6 +98,9 @@ document.querySelector(".btn-cancelar").addEventListener("click", () => {
   total = 0;
   paquetesAgregados = [];
   totalElemento.textContent = "$0 CLP";
+
+  const emailInput = document.querySelector("#email");
+  if (emailInput) emailInput.value = "";
 
   Toastify({
     text: "Cotización cancelada.",

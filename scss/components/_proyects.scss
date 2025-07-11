@@ -1,29 +1,39 @@
 .proyectos {
-  padding-top: 4rem;
-  padding: 0 2rem;
+  padding: 12rem 2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 2rem;
   flex-wrap: wrap;
-  padding-bottom: 4rem;
-  background-color: rgba(255, 255, 255, 0.13);
+  justify-content: center;
+  gap: 2rem;
   max-width: 80%;
   margin: auto;
   border-radius: 60px;
+  position: relative;
+  z-index: 1;
 }
 
 .card-proyecto {
-  padding-top: 6rem;
+  padding: 2rem 1rem;
   text-align: center;
-  max-width: 280px;
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  position: relative;
+  z-index: 1;
 
   img {
     width: 100%;
-    border-radius: 24px;
+    border-radius: 16px;
     object-fit: cover;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem !important;
+  }
+
+  h4 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .btn-ver-mas {
@@ -35,37 +45,135 @@
     color: $primary-white;
     font-weight: bold;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 
     &:hover {
       background: $brand-red;
+      transform: scale(1.1);
     }
+
+    transform: none;
   }
 }
 
+.proyecto-detalle-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  background: transparent;
+  padding: 1rem;
+  box-sizing: border-box;
+  animation: detalleFadeIn 0.6s ease forwards;
+  backdrop-filter: blur(0);
+  will-change: backdrop-filter;
+}
+
 .proyecto-detalle {
-  padding-top: 6rem;
-  text-align: center;
   max-width: 700px;
+  width: 100%;
+  padding: 2rem 2rem 5.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.6s ease forwards;
+  animation-delay: 0.15s;
 
   img {
-    width: 100%;
-    border-radius: 16px;
+    width: 90%;
+    max-height: 300px;
     object-fit: cover;
-    padding-bottom: 2rem;
+    border-radius: 16px;
+    margin: 0 auto 2rem !important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+    color: $primary-black !important;
+  }
+
+  p {
+    font-size: 1.1rem !important;
+    margin-bottom: 2rem !important;
+    color: $primary-black !important;
+    flex-grow: 0;
   }
 
   .btn-volver {
-    margin-top: 2rem;
-    background: $brand-red;
-    padding: 0.6rem 2rem;
-    color: $primary-white;
-    border: none;
-    border-radius: 999px;
-    font-weight: bold;
-    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $brand-blue;
+    padding: 0.8rem 2.5rem !important;
+    color: $primary-white !important;
+    border: none !important;
+    border-radius: 999px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 
     &:hover {
       background: darken($brand-red, 10%);
+      transform: translateX(-50%) scale(1.1);
     }
+
+    transform: translateX(-50%);
+  }
+}
+
+.overlay-activo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes detalleFadeIn {
+  from {
+    backdrop-filter: blur(0);
+  }
+  to {
+    backdrop-filter: blur(4px);
   }
 }

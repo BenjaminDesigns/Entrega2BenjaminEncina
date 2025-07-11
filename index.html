@@ -25,18 +25,22 @@
     </form>
   </div>
 
-  <div class="contador-visitas hidden">
-    <p class="contador-texto">Visitas totales: 0</p>
-  </div>
-
   <button class="btnScrollTop hidden" aria-label="Volver arriba" title="Volver arriba">▲</button>
 
 
   <nav class="navbar hidden">
-    <div class="logo"></div>
+    <div class="contador-visitas hidden">
+      <p class="contador-texto">Visitas totales: 0</p>
+    </div>
+    <div class="logo">
+  <a href="#">
+    <img src="imgs/wordmark_full.svg" alt="Logo">
+  </a>
+</div>
+
     <div class="nav-buttons">
-      <a href="#proyectos" class="btnProyectos" aria-label="Ir a nuestros proyectos">Nuestros proyectos</a>
-      <a href="#cards" class="btnInicio" aria-label="Ir a nuestros servicios">Nuestros servicios</a>
+      <a href="#proyectos" class="btnInicio" aria-label="Proyectos">Proyectos</a>
+      <a href="#cards" class="btnInicio" aria-label="Servicios">Servicios</a>
     </div>
   </nav>
 
@@ -50,17 +54,35 @@
     <img src="imgs/wordmark_full.svg" alt="">
   </main>
 
-  <section class="proyectos hidden" id="proyectos"></section>
+  <div class="Nosotros hidden">
+  <h3>
+    eccco™ es diseño que resuena.<br />
+    Una visión audaz, modular y disruptiva que transforma ideas en experiencias visuales con intención. No hacemos diseño para decorar, lo hacemos para comunicar, provocar y avanzar.
+  </h3>
+</div>
+
+
+  <section class="proyectos hidden" id="proyectos">
+          <a href="#proyectos" class="btnProyectos" aria-label="Ir a nuestros proyectos">Cargar proyectos</a>
+  </section>
+
   <section class="paquetes hidden" id="cards"></section>
 
 
   <footer class="hidden">
     <h2 class="total">$0 CLP</h2>
+    <form class="input-mail">
+      <label for="email">Tu correo electrónico:</label>
+      <input type="email" id="email" placeholder="Tu correo electrónico" required />
+    </form>
+
+
     <div class="buttons">
       <button class="btn-cancelar">Cancelar</button>
       <button class="btn-enviar">Enviar cotización</button>
     </div>
   </footer>
+
 
 
 </body>

@@ -50,10 +50,10 @@
 
 .contador-visitas {
   padding: 1rem;
-  background-color: #2746DF;
   position: fixed;
   top: 20px;
   left: 20px;
+  background-color: #2746DF;
   border: 1px solid #f7f7f2;
   border-radius: 999px;
 }
@@ -113,6 +113,10 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 1s;
 }
 .tarjeta .icono {
   max-width: 30%;
@@ -139,13 +143,24 @@ h3 {
   border-radius: 999px;
   margin-bottom: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.3s, transform 0.2s;
   font-size: 1.5rem;
+  transition: transform 0.2s ease;
 }
 .tarjeta .btn-anadir:hover {
   background: #FFE053;
+  transform: scale(1.05);
+}
+.tarjeta .btn-anadir:active {
+  transform: scale(0.98);
 }
 
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (max-width: 760px) {
   .paquetes {
     flex-direction: column;
@@ -174,6 +189,32 @@ footer .total {
   text-align: center;
   margin-top: 2rem;
   font-size: 4rem;
+}
+footer .input-mail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+footer .input-mail label {
+  font-family: "Manrope";
+  font-size: 1rem;
+  color: #f7f7f2;
+  text-align: center;
+  font-weight: bold;
+}
+footer .input-mail input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+footer .input-mail input:focus {
+  border-color: #4c4ffd;
+  outline: none;
 }
 footer .buttons {
   display: flex;
@@ -218,33 +259,45 @@ footer .buttons .btn-cancelar:hover {
     font-size: 1rem !important;
     margin: auto;
   }
+  footer .input-mail {
+    padding: 1.5rem 1rem 0;
+  }
 }
 .proyectos {
-  padding-top: 4rem;
-  padding: 0 2rem;
+  padding: 12rem 2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 2rem;
   flex-wrap: wrap;
-  padding-bottom: 4rem;
-  background-color: rgba(255, 255, 255, 0.13);
+  justify-content: center;
+  gap: 2rem;
   max-width: 80%;
   margin: auto;
   border-radius: 60px;
+  position: relative;
+  z-index: 1;
 }
 
 .card-proyecto {
-  padding-top: 6rem;
+  padding: 2rem 1rem;
   text-align: center;
-  max-width: 280px;
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  position: relative;
+  z-index: 1;
 }
 .card-proyecto img {
   width: 100%;
-  border-radius: 24px;
+  border-radius: 16px;
   object-fit: cover;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem !important;
+}
+.card-proyecto h4 {
+  font-size: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
 }
 .card-proyecto .btn-ver-mas {
   margin-top: 1rem;
@@ -255,42 +308,148 @@ footer .buttons .btn-cancelar:hover {
   color: #f7f7f2;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  transform: none;
 }
 .card-proyecto .btn-ver-mas:hover {
   background: #FC5938;
+  transform: scale(1.1);
+}
+
+.proyecto-detalle-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  background: transparent;
+  padding: 1rem;
+  box-sizing: border-box;
+  animation: detalleFadeIn 0.6s ease forwards;
+  backdrop-filter: blur(0);
+  will-change: backdrop-filter;
 }
 
 .proyecto-detalle {
-  padding-top: 6rem;
-  text-align: center;
   max-width: 700px;
+  width: 100%;
+  padding: 2rem 2rem 5.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade 0.6s ease forwards;
+  animation-delay: 0.15s;
 }
 .proyecto-detalle img {
-  width: 100%;
-  border-radius: 16px;
+  width: 90%;
+  max-height: 300px;
   object-fit: cover;
-  padding-bottom: 2rem;
+  border-radius: 16px;
+  margin: 0 auto 2rem !important;
+}
+.proyecto-detalle h1 {
+  font-size: 2rem !important;
+  margin-bottom: 1rem !important;
+  color: #141414 !important;
+}
+.proyecto-detalle p {
+  font-size: 1.1rem !important;
+  margin-bottom: 2rem !important;
+  color: #141414 !important;
+  flex-grow: 0;
 }
 .proyecto-detalle .btn-volver {
-  margin-top: 2rem;
-  background: #FC5938;
-  padding: 0.6rem 2rem;
-  color: #f7f7f2;
-  border: none;
-  border-radius: 999px;
-  font-weight: bold;
-  cursor: pointer;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2746DF;
+  padding: 0.8rem 2.5rem !important;
+  color: #f7f7f2 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transform: translateX(-50%);
 }
 .proyecto-detalle .btn-volver:hover {
   background: rgb(251.2425742574, 47.0891089109, 5.7574257426);
+  transform: translateX(-50%) scale(1.1);
 }
 
+.overlay-activo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes detalleFadeIn {
+  from {
+    backdrop-filter: blur(0);
+  }
+  to {
+    backdrop-filter: blur(4px);
+  }
+}
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  margin: 1rem 1.5rem;
+  justify-content: flex-end;
+  height: 3rem;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+.navbar .logo img {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  z-index: 3;
+  padding: 2rem 3rem;
+  background-color: #2746DF;
+  border: 1px solid #f7f7f2;
+  border-radius: 100px;
 }
 .navbar .nav-buttons {
   flex: 1;
@@ -307,6 +466,14 @@ footer .buttons .btn-cancelar:hover {
     font-size: 0.8rem;
     text-align: center;
   }
+  .logo img {
+    width: 150px;
+  }
+}
+@media (max-width: 1200px) {
+  .logo img {
+    display: none;
+  }
 }
 .btnScrollTop {
   position: fixed;
@@ -320,6 +487,7 @@ footer .buttons .btn-cancelar:hover {
   color: #f7f7f2;
   font-size: 24px;
   cursor: pointer;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -328,6 +496,17 @@ footer .buttons .btn-cancelar:hover {
 }
 .btnScrollTop:hover {
   background-color: rgb(27.2258064516, 53.6008064516, 183.7741935484);
+}
+
+.Nosotros {
+  background-color: #141414;
+  padding: 8rem 0;
+  text-align: center;
+}
+.Nosotros h3 {
+  max-width: 80%;
+  margin: auto;
+  font-size: 3rem;
 }
 
 html {
@@ -356,33 +535,25 @@ main {
 }
 
 .btnProyectos {
-  margin-top: 3rem;
-  padding: 2rem;
+  margin-top: 2rem;
+  padding: 2rem 4rem;
   font-size: 1rem;
-  font-weight: 500;
-  background-color: #f7f7f2;
-  border: none;
-  color: #2746DF;
-  border-radius: 1000px;
-}
-.btnProyectos:hover {
-  background-color: #FFE053;
-  color: #141414;
+  font-weight: 200;
+  background-color: #2746DF;
+  border: 1px solid #f7f7f2;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 3rem !important;
 }
 
 .btnInicio {
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding: 2rem;
   font-size: 1rem;
-  font-weight: 500;
-  background-color: #f7f7f2;
-  border: none;
-  color: #2746DF;
-  border-radius: 1000px;
-}
-.btnInicio:hover {
-  background-color: #FFE053;
-  color: #141414;
+  font-weight: 200;
+  background-color: #2746DF;
+  border: 1px solid #f7f7f2;
+  border-radius: 999px;
 }
 
 .hidden {
