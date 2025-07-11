@@ -10,3 +10,14 @@
     }
 }
   
+@media (max-width: 920px) {
+    h3 {
+        font-size: 2rem !important; 
+    }
+}
+
+@media (max-width: 600px) {
+    h3 {
+        font-size: 1.5rem !important; 
+    }
+}

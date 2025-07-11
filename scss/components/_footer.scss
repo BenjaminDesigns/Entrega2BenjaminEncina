@@ -15,6 +15,7 @@ footer {
     padding: 0;
     max-width: 400px;
     margin: 0 auto;
+    margin-bottom: 2rem !important;
 
     label {
       font-family: "Manrope";
@@ -91,5 +92,13 @@ footer {
 
   footer .input-mail {
     padding: 1.5rem 1rem 0;
+    margin-bottom: 4rem !important;
   }
+}
+
+@media (max-width: 580px) {
+    h2 {
+      font-size: 3rem !important;
+    }
+  
 }

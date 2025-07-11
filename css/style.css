@@ -179,6 +179,7 @@ h3 {
   .descripcion {
     font-size: 1rem !important;
     margin-bottom: 1rem;
+    display: none;
   }
 }
 footer {
@@ -197,6 +198,7 @@ footer .input-mail {
   padding: 0;
   max-width: 400px;
   margin: 0 auto;
+  margin-bottom: 2rem !important;
 }
 footer .input-mail label {
   font-family: "Manrope";
@@ -261,6 +263,12 @@ footer .buttons .btn-cancelar:hover {
   }
   footer .input-mail {
     padding: 1.5rem 1rem 0;
+    margin-bottom: 4rem !important;
+  }
+}
+@media (max-width: 580px) {
+  h2 {
+    font-size: 3rem !important;
   }
 }
 .proyectos {
@@ -429,6 +437,16 @@ footer .buttons .btn-cancelar:hover {
     backdrop-filter: blur(4px);
   }
 }
+@media (max-width: 920px) {
+  .proyectos a {
+    font-size: 2rem !important;
+  }
+}
+@media (max-width: 520px) {
+  .proyectos a {
+    font-size: 1rem !important;
+  }
+}
 .navbar {
   display: flex;
   align-items: center;
@@ -509,6 +527,16 @@ footer .buttons .btn-cancelar:hover {
   font-size: 3rem;
 }
 
+@media (max-width: 920px) {
+  h3 {
+    font-size: 2rem !important;
+  }
+}
+@media (max-width: 600px) {
+  h3 {
+    font-size: 1.5rem !important;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
