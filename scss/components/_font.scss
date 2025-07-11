@@ -14,3 +14,19 @@ h3 {
     font-size: 2.5rem;
     font-weight: 400;
 }
+
+.swal2-popup {
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.toastify {
+  font-family: 'Manrope', 'Arial', sans-serif !important;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $primary-white;
+
+  background: $primary-black !important;
+  border-radius: 999px !important;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}

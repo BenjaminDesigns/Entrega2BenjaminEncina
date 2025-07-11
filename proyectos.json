@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Mount Wanderer",
+    "imagen": "proyects/mountwanderer.jpg",
+    "descripcion": "Mount Wanderer es una marca de ropa e indumentaria para hacer trekking y deportes al aire libre.",
+    "enlace": "Ver más"
+  },
+  {
+    "id": 2,
+    "nombre": "Kenaz",
+    "imagen": "proyects/kenaz.jpg",
+    "descripcion": "Kenaz es una tienda de plantas que busca no solo vender plantas, sino que crear espacios verdes únicos y memorables.",
+    "enlace": "Ver más"
+  },
+  {
+    "id": 3,
+    "nombre": "CicloZero",
+    "imagen": "proyects/ciclozero.jpg",
+    "descripcion": "CicloZero es una app que busca transformar el transporte de productos, permitiendo que medios de transportes más urbanos como patinetas, BMXs, y otros, sean utiliados por sus empleados.",
+    "enlace": "Ver más"
+  },
+  {
+    "id": 4,
+    "nombre": "Wora",
+    "imagen": "proyects/wora.jpg",
+    "descripcion": "Wora es una marca de indumentaria deportiva para powerlifters, es ropa que no solo es linda, sino que permite a las personas alcanzar su mayor potencial físico",
+    "enlace": "Ver más"
+  }
+]

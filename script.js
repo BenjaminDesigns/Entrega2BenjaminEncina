@@ -1,6 +1,4 @@
 let nombre = localStorage.getItem("nombre");
-let total = 0;
-let paquetesAgregados = [];
 
 const loginContainer = document.querySelector("#loginContainer");
 const loginForm = document.querySelector("#loginForm");
@@ -8,30 +6,44 @@ const nombreInput = document.querySelector("#nombreInput");
 
 const mainContent = document.querySelector("main");
 const paquetesSection = document.querySelector(".paquetes");
+const proyectosSection = document.querySelector(".proyectos");
 const footer = document.querySelector("footer");
 const contador = document.querySelector(".contador-visitas");
+const totalElemento = document.querySelector(".total");
+const navbar = document.querySelector(".navbar");
+const btnScroll = document.querySelector(".btnScrollTop");
+
+let total = 0;
+let paquetesAgregados = [];
+
+// ---------------------------------------- //
 
 function mostrarContenido() {
-  loginContainer.remove(); 
+  loginContainer.remove();
   mainContent.classList.remove("hidden");
   paquetesSection.classList.remove("hidden");
+  proyectosSection.classList.remove("hidden");
   footer.classList.remove("hidden");
   contador.classList.remove("hidden");
+  navbar.classList.remove("hidden");
+  btnScroll.classList.remove("hidden");
   document.querySelector("main h3").textContent = `Bienvenid@, ${nombre} 👋`;
 }
 
-// Mostrar contenido si ya había iniciado sesión
-if (nombre) {
-  mostrarContenido();
-}
+if (nombre) mostrarContenido();
 
-// Recibir nombre
-loginForm.addEventListener("submit", function (e) {
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const nombreIngresado = nombreInput.value.trim();
 
   if (nombreIngresado.length < 3) {
-    alert("Tu nombre debe tener al menos 3 letras.");
+    Toastify({
+      text: "Tu nombre debe tener al menos 3 letras.",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      backgroundColor: "#e63946",
+    }).showToast();
     return;
   }
 
@@ -40,37 +52,123 @@ loginForm.addEventListener("submit", function (e) {
   mostrarContenido();
 });
 
+// ---------------------------------------- //
 
-const paquetes = {
-  identidad: 500000,
-  web: 500000,
-  rebranding: 250000,
-};
-
-document.querySelectorAll(".btn-anadir").forEach(boton => {
-  boton.addEventListener("click", () => {
-    const tarjeta = boton.closest(".tarjeta");
-    const tipo = tarjeta.getAttribute("data-paquete");
-
-    if (paquetesAgregados.includes(tipo)) {
-      alert("Ya seleccionaste este paquete");
-      return;
-    }
-
-    total += paquetes[tipo];
-    paquetesAgregados.push(tipo);
-    document.querySelector(".total").textContent = `$${total.toLocaleString()} CLP`;
-  });
-});
-
-// Enviar cotización
 document.querySelector(".btn-enviar").addEventListener("click", () => {
-  document.querySelector(".total").textContent = "¡Cotización enviada con éxito!";
+  if (total === 0) {
+    Toastify({
+      text: "Primero debes añadir un paquete.",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      backgroundColor: "#ffa502",
+    }).showToast();
+    return;
+  }
+
+  totalElemento.textContent = "¡Cotización enviada con éxito!";
+
+  Swal.fire({
+    title: "¡Cotización Enviada!",
+    text: "Gracias por confiar en eccco™ studio.",
+    icon: "success",
+    confirmButtonText: "Cerrar",
+  });
+
+  confetti();
 });
 
-// Contador de visitas
-const contadorTexto = document.querySelector('.contador-texto');
-let visitas = localStorage.getItem('visitas') || 0;
+document.querySelector(".btn-cancelar").addEventListener("click", () => {
+  total = 0;
+  paquetesAgregados = [];
+  totalElemento.textContent = "$0 CLP";
+
+  Toastify({
+    text: "Cotización cancelada.",
+    duration: 3000,
+    gravity: "top",
+    position: "center",
+    backgroundColor: "#6c757d",
+  }).showToast();
+});
+
+// ---------------------------------------- //
+
+function cargarPaquetes() {
+  fetch("paquetes.json")
+    .then((res) => {
+      if (!res.ok) throw new Error("No se pudo cargar el archivo paquetes.json");
+      return res.json();
+    })
+    .then((paquetes) => {
+      const contenedor = document.querySelector(".paquetes");
+
+      paquetes.forEach((paquete) => {
+        const tarjeta = document.createElement("div");
+        tarjeta.classList.add("tarjeta");
+        tarjeta.setAttribute("data-paquete", paquete.id);
+
+        tarjeta.innerHTML = `
+          <img src="${paquete.imagen}" class="icono" alt="Ícono de ${paquete.nombre}">
+          <h4>${paquete.nombre}</h4>
+          <p class="valor">$${paquete.precio.toLocaleString()} CLP</p>
+          <p class="descripcion">${paquete.descripcion}</p>
+          <button class="btn-anadir">Añadir</button>
+        `;
+
+        contenedor.appendChild(tarjeta);
+      });
+
+      activarBotones();
+    })
+    .catch((error) => {
+      Swal.fire("Error", error.message, "error");
+    });
+}
+
+// ---------------------------------------- //
+
+function activarBotones() {
+  const botones = document.querySelectorAll(".btn-anadir");
+
+  botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      const tarjeta = boton.closest(".tarjeta");
+      const id = tarjeta.getAttribute("data-paquete");
+
+      if (paquetesAgregados.includes(id)) {
+        Toastify({
+          text: "Ya seleccionaste este paquete.",
+          duration: 3000,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#ffc107",
+        }).showToast();
+        return;
+      }
+
+      const valorTexto = tarjeta.querySelector(".valor").textContent;
+      const precio = parseInt(valorTexto.replace(/\D/g, ""), 10);
+
+      total += precio;
+      paquetesAgregados.push(id);
+      totalElemento.textContent = `$${total.toLocaleString()} CLP`;
+    });
+  });
+}
+
+cargarPaquetes();
+
+// ---------------------------------------- //
+
+const contadorTexto = document.querySelector(".contador-texto");
+let visitas = localStorage.getItem("visitas") || 0;
 visitas++;
-localStorage.setItem('visitas', visitas);
+localStorage.setItem("visitas", visitas);
 contadorTexto.textContent = `Visitas totales: ${visitas}`;
+
+// ---------------------------------------- //
+
+btnScroll.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

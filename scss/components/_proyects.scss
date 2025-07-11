@@ -1,0 +1,71 @@
+.proyectos {
+  padding-top: 4rem;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-bottom: 4rem;
+  background-color: rgba(255, 255, 255, 0.13);
+  max-width: 80%;
+  margin: auto;
+  border-radius: 60px;
+}
+
+.card-proyecto {
+  padding-top: 6rem;
+  text-align: center;
+  max-width: 280px;
+
+  img {
+    width: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    padding-bottom: 1rem;
+  }
+
+  .btn-ver-mas {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 999px;
+    background: $brand-blue;
+    color: $primary-white;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background: $brand-red;
+    }
+  }
+}
+
+.proyecto-detalle {
+  padding-top: 6rem;
+  text-align: center;
+  max-width: 700px;
+
+  img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    padding-bottom: 2rem;
+  }
+
+  .btn-volver {
+    margin-top: 2rem;
+    background: $brand-red;
+    padding: 0.6rem 2rem;
+    color: $primary-white;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($brand-red, 10%);
+    }
+  }
+}

@@ -4,7 +4,9 @@
 @import "components/font";
 @import "components/cards";
 @import "components/footer";
-
+@import "components/proyects";
+@import "components/navbar";
+@import "components/regreso";
 
 html {
     scroll-behavior: smooth;
@@ -29,6 +31,22 @@ main {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+}
+
+.btnProyectos {
+    margin-top: 3rem;
+    padding: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: $primary-white;
+    border: none;
+    color: $brand-blue;
+    border-radius: 1000px;
+
+    &:hover {
+        background-color: $brand-yellow;
+        color: $primary-black;
+    }
 }
 
 .btnInicio {

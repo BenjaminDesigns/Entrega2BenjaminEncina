@@ -5,6 +5,7 @@
   gap: 2rem;
   padding-top: 8rem;
   min-width: 80%;
+  margin: auto;
 }
 
 .tarjeta {
@@ -56,3 +57,26 @@
   }
 }
 
+@media (max-width: 760px) {
+  .paquetes {
+    flex-direction: column;
+    padding-top: 2rem; 
+    min-width: 100%;  
+  }
+
+  .tarjeta {
+    width: 80% !important;
+    max-width: 100%;
+    margin-bottom: 2rem;
+    margin: auto;
+  }
+
+  h4 {
+    font-size: 1.5rem !important;
+  }
+
+  .descripcion {
+    font-size: 1rem !important;
+    margin-bottom: 1rem;
+  }
+}

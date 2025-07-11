@@ -1,0 +1,23 @@
+[
+  {
+    "id": "identidad",
+    "nombre": "Identidad Gráfica",
+    "precio": 500000,
+    "descripcion": "Diseño de logotipo, paleta de colores y más.",
+    "imagen": "icons/design.svg"
+  },
+  {
+    "id": "web",
+    "nombre": "Desarrollo Web",
+    "precio": 500000,
+    "descripcion": "Maquetación y diseño responsivo en código.",
+    "imagen": "icons/code.svg"
+  },
+  {
+    "id": "rebranding",
+    "nombre": "Rebranding",
+    "precio": 250000,
+    "descripcion": "Rediseño de identidad de marca.",
+    "imagen": "icons/asterisk.svg"
+  }
+]

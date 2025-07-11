@@ -7,3 +7,10 @@
     border: 1px solid $primary-white;
     border-radius: 999px;
 }
+
+  @media (max-width: 720px) {
+    
+    .contador-visitas {
+        display: none;
+    }
+  }

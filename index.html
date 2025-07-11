@@ -2,69 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eccco™ studio</title>
-    <link rel="icon" href="imgs/favicon.png"> 
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eccco™ studio</title>
+  <link rel="icon" href="imgs/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script defer src="script.js"></script>
+  <script defer src="proyectos.js"></script>
 </head>
 
 <body>
 
-    <div id="loginContainer" class="popup">
-      <h3>¿Cómo te llamas?</h3>
-      <form id="loginForm">
-        <input type="text" id="nombreInput" placeholder="Ingresa tu nombre" required />
-        <button type="submit">Ingresar</button>
-      </form>
+  <div id="loginContainer" class="popup">
+    <h3>¿Cómo te llamas?</h3>
+    <form id="loginForm">
+      <input type="text" id="nombreInput" placeholder="Ingresa tu nombre" required />
+      <button type="submit">Ingresar</button>
+    </form>
+  </div>
+
+  <div class="contador-visitas hidden">
+    <p class="contador-texto">Visitas totales: 0</p>
+  </div>
+
+  <button class="btnScrollTop hidden" aria-label="Volver arriba" title="Volver arriba">▲</button>
+
+
+  <nav class="navbar hidden">
+    <div class="logo"></div>
+    <div class="nav-buttons">
+      <a href="#proyectos" class="btnProyectos" aria-label="Ir a nuestros proyectos">Nuestros proyectos</a>
+      <a href="#cards" class="btnInicio" aria-label="Ir a nuestros servicios">Nuestros servicios</a>
     </div>
+  </nav>
 
 
-    <div class="contador-visitas hidden">
-        <p class="contador-texto">Visitas totales: 0</p>
-    </div>
+  <main class="hidden">
+    <h3>Bienvenid@...</h3>
+    <p>
+      Somos una agencia creativa freelance basada en Chile, especializada en Branding, diseño UX/UI, Product Design, y desarrollo de Front-End.<br />
+      eccco™ - es resonancia visual.
+    </p>
+    <img src="imgs/wordmark_full.svg" alt="">
+  </main>
 
-    <main class="hidden">
-        <h3>Bienvenid@...</h3>
-        <p>Somos una agencia creativa freelance basada en Chile, especializada en Branding, diseño UX/UI, Product Design, y desarrollo de Front-End.
-        <br>
-        eccco™ - es resonancia visual.</p>
-        <img src="imgs/wordmark_full.svg" alt="eccco ™ studio wordmark logo">
-        <a href="#cards"><button class="btnInicio">Ver nuestros servicios</button></a>
-    </main>
+  <section class="proyectos hidden" id="proyectos"></section>
+  <section class="paquetes hidden" id="cards"></section>
 
-    <section class="paquetes hidden" id="cards">
-    <div class="tarjeta" data-paquete="identidad">
-      <img src="icons/design.svg" class="icono" alt="Ícono de diseño">
-      <h4>Identidad Gráfica</h4>
-      <p class="valor">$500.000 CLP</p>
-      <p class="descripcion">Diseño de logotipo, paleta de colores y más.</p>
-      <button class="btn-anadir">Añadir</button>
-    </div>
-
-    <div class="tarjeta" data-paquete="web">
-      <img src="icons/code.svg" class="icono" alt="Ícono de programación">
-      <h4>Desarrollo Web</h4>
-      <p class="valor">$500.000 CLP</p>
-      <p class="descripcion">Maquetación y diseño responsivo en código.</p>
-      <button class="btn-anadir">Añadir</button>
-    </div>
-
-    <div class="tarjeta" data-paquete="rebranding">
-        <img src="icons/asterisk.svg" class="icono" alt="Ícono de rebranding">
-            <h4>Rebranding</h4>
-            <p class="valor">$250.000 CLP</p>
-            <p class="descripcion">Rediseño de identidad de marca..</p>
-            <button class="btn-anadir">Añadir</button>
-        </div>
-    </section>
 
   <footer class="hidden">
     <h2 class="total">$0 CLP</h2>
-    <button class="btn-enviar">Enviar cotización</button>
+    <div class="buttons">
+      <button class="btn-cancelar">Cancelar</button>
+      <button class="btn-enviar">Enviar cotización</button>
+    </div>
   </footer>
 
+
 </body>
+
 
 </html>

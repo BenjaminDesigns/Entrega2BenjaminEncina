@@ -1,29 +1,64 @@
 footer {
-    margin-top: 4rem;
-    margin-bottom: 30dvh;
+  margin-top: 4rem;
+  margin-bottom: 30dvh;
 
-    }.total {
-        text-align: center;
-        margin-top: 2rem;
-        font-size: 4rem;
+  .total {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 4rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+      flex: 1 1 200px;
+      max-width: 250px;
+      font-size: 1.5rem;
+      padding: 0.6rem 1.5rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
 
     .btn-enviar {
-        font-size: 1.5rem;
-        display: block;
-        margin: 1rem auto;
-        background: $primary-white;
-        color: $brand-blue;
-        padding: 0.6rem 1.5rem;
-        border: none;
-        border-radius: 999px;
-        cursor: pointer;
-        font-weight: bold;
+      background: $primary-white;
+      color: $brand-blue;
 
-        &:hover {
-            background: $brand-red;
-        }
+      &:hover {
+        background: rgb(182, 182, 228);
+        color: $brand-blue;
+      }
+    }
+
+    .btn-cancelar {
+      background: $brand-red;
+      color: $primary-white;
+
+      &:hover {
+        background: rgb(255, 110, 100);
+      }
+    }
+  }
 }
 
+@media (max-width: 760px) {
+  .buttons {
 
-    
+  flex-direction: column;
+  height: 1rem;
+  margin: auto;
+
+    button {
+      font-size: 1rem !important;
+      margin: auto;
+  }
+  }
+  
+}
+
