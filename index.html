@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,10 +10,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <script defer src="script.js"></script>
-  <script defer src="proyectos.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/proyectos.js"></script>
 </head>
-
 <body>
 
   <div id="loginContainer" class="popup">
@@ -27,23 +25,18 @@
 
   <button class="btnScrollTop hidden" aria-label="Volver arriba" title="Volver arriba">▲</button>
 
-
   <nav class="navbar hidden">
     <div class="contador-visitas hidden">
       <p class="contador-texto">Visitas totales: 0</p>
     </div>
     <div class="logo">
-  <a href="#">
-    <img src="imgs/wordmark_full.svg" alt="Logo">
-  </a>
-</div>
-
+      <a href="#"><img src="imgs/wordmark_full.svg" alt="Logo"></a>
+    </div>
     <div class="nav-buttons">
       <a href="#proyectos" class="btnInicio" aria-label="Proyectos">Proyectos</a>
       <a href="#cards" class="btnInicio" aria-label="Servicios">Servicios</a>
     </div>
   </nav>
-
 
   <main class="hidden">
     <h3>Bienvenid@...</h3>
@@ -55,12 +48,11 @@
   </main>
 
   <div class="Nosotros hidden">
-  <h3>
-    eccco™ es diseño que resuena.<br />
-    Una visión audaz, modular y disruptiva que transforma ideas en experiencias visuales con intención. No hacemos diseño para decorar, lo hacemos para comunicar, provocar y avanzar.
-  </h3>
-</div>
-
+    <h3>
+      eccco™ es diseño que resuena.<br />
+      Una visión audaz, modular y disruptiva que transforma ideas en experiencias visuales con intención.
+    </h3>
+  </div>
 
   <section class="proyectos hidden" id="proyectos">
     <a href="#proyectos" class="btnProyectos" aria-label="Ir a nuestros proyectos">Cargar proyectos</a>
@@ -68,12 +60,32 @@
 
   <section class="paquetes hidden" id="cards"></section>
 
+  <section class="resumen-paquetes hidden"></section>
 
   <footer class="hidden">
     <h2 class="total">$0 CLP</h2>
     <form class="input-mail">
-      <label for="email">Tu correo electrónico:</label>
-      <input type="email" id="email" placeholder="Tu correo electrónico" required />
+      <div class="fila-input">
+        <div>
+          <label for="nombreCliente">Nombre completo:</label>
+          <input type="text" id="nombreCliente" required />
+        </div>
+        <div>
+          <label for="empresaCliente">Empresa:</label>
+          <input type="text" id="empresaCliente" />
+        </div>
+      </div>
+
+      <div class="fila-input">
+        <div>
+          <label for="direccionCliente">Dirección:</label>
+          <input type="text" id="direccionCliente" required />
+        </div>
+        <div>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" required />
+        </div>
+      </div>
     </form>
 
 
@@ -83,9 +95,5 @@
     </div>
   </footer>
 
-
-
 </body>
-
-
 </html>

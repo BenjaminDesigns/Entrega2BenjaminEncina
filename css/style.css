@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 .popup {
   position: fixed;
@@ -143,15 +144,35 @@ h3 {
   border-radius: 999px;
   margin-bottom: 1rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: background 0.3s, transform 0.2s ease;
   font-size: 1.5rem;
-  transition: transform 0.2s ease;
 }
 .tarjeta .btn-anadir:hover {
   background: #FFE053;
   transform: scale(1.05);
 }
 .tarjeta .btn-anadir:active {
+  transform: scale(0.98);
+}
+.tarjeta .texto-añadido {
+  margin-top: 0.5rem;
+}
+.tarjeta .btn-quitar {
+  border-radius: 120px;
+  background-color: #FC5938;
+  border: 2px solid #f7f7f2;
+  padding: 1rem 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s ease;
+  font-size: 1rem;
+  color: #f7f7f2;
+}
+.tarjeta .btn-quitar:hover {
+  transform: scale(1.05);
+}
+.tarjeta .btn-quitar:active {
   transform: scale(0.98);
 }
 
@@ -194,11 +215,21 @@ footer .total {
 footer .input-mail {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 0;
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
   margin-bottom: 2rem !important;
+}
+footer .input-mail .fila-input {
+  display: flex;
+  gap: 1rem;
+}
+footer .input-mail .fila-input > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 footer .input-mail label {
   font-family: "Manrope";
@@ -265,6 +296,9 @@ footer .buttons .btn-cancelar:hover {
     padding: 1.5rem 1rem 0;
     margin-bottom: 4rem !important;
   }
+  footer .input-mail .fila-input {
+    flex-direction: column;
+  }
 }
 @media (max-width: 580px) {
   h2 {
@@ -287,7 +321,11 @@ footer .buttons .btn-cancelar:hover {
 .card-proyecto {
   padding: 2rem 1rem;
   text-align: center;
-  width: 280px;
+  /* Eliminar ancho fijo */
+  /* width: 280px; */
+  /* Nueva regla para que ocupe espacio responsivamente */
+  flex: 1 1 280px; /* base 280px, crece y encoge según espacio */
+  max-width: 320px; /* limita crecimiento máximo */
   background-color: rgba(255, 255, 255, 0.08);
   border-radius: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -300,7 +338,7 @@ footer .buttons .btn-cancelar:hover {
 .card-proyecto img {
   width: 100%;
   border-radius: 16px;
-  object-fit: cover;
+  object-fit: cover; /* mantiene proporción sin deformar */
   margin-bottom: 1rem !important;
 }
 .card-proyecto h4 {
@@ -586,6 +624,10 @@ main {
 
 .hidden {
   display: none;
+}
+
+.color-black {
+  color: black !important;
 }
 
 /*# sourceMappingURL=style.css.map */

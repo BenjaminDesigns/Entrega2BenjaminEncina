@@ -7,6 +7,7 @@ const nombreInput = document.querySelector("#nombreInput");
 const mainContent = document.querySelector("main");
 const paquetesSection = document.querySelector(".paquetes");
 const proyectosSection = document.querySelector(".proyectos");
+const resumenPaquetes = document.querySelector(".resumen-paquetes");
 const footer = document.querySelector("footer");
 const contador = document.querySelector(".contador-visitas");
 const totalElemento = document.querySelector(".total");
@@ -16,16 +17,16 @@ const btnScroll = document.querySelector(".btnScrollTop");
 
 let total = 0;
 let paquetesAgregados = [];
+let paquetes = [];
 
-// ---------------------------------------- //
+// ------------------------------------------------------ //
 
-
-// Tal vez haya un método más elegante para esto, pero no lo descubrí ;( 
 function mostrarContenido() {
   loginContainer.remove();
   mainContent.classList.remove("hidden");
   paquetesSection.classList.remove("hidden");
   proyectosSection.classList.remove("hidden");
+  resumenPaquetes.classList.remove("hidden");
   footer.classList.remove("hidden");
   contador.classList.remove("hidden");
   nosotros.classList.remove("hidden");
@@ -33,6 +34,8 @@ function mostrarContenido() {
   btnScroll.classList.remove("hidden");
   document.querySelector("main h3").textContent = `Bienvenid@, ${nombre} 👋`;
 }
+
+// ------------------------------------------------------ //
 
 if (nombre) mostrarContenido();
 
@@ -46,7 +49,7 @@ loginForm.addEventListener("submit", (e) => {
       duration: 3000,
       gravity: "top",
       position: "center",
-      backgroundColor: "#1b1b1bff",
+      backgroundColor: "#1b1b1b",
     }).showToast();
     return;
   }
@@ -56,11 +59,24 @@ loginForm.addEventListener("submit", (e) => {
   mostrarContenido();
 });
 
-// ---------------------------------------- //
+// ------------------------------------------------------ //
 
 document.querySelector(".btn-enviar").addEventListener("click", () => {
-  const emailInput = document.querySelector("#email");
-  const email = emailInput.value.trim();
+  const nombreCliente = document.querySelector("#nombreCliente").value.trim();
+  const empresaCliente = document.querySelector("#empresaCliente").value.trim();
+  const direccionCliente = document.querySelector("#direccionCliente").value.trim();
+  const email = document.querySelector("#email").value.trim();
+
+  if (!nombreCliente || !direccionCliente || !email.includes("@")) {
+    Toastify({
+      text: "Completa todos los campos obligatorios.",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      backgroundColor: "#e63946",
+    }).showToast();
+    return;
+  }
 
   if (total === 0) {
     Toastify({
@@ -73,36 +89,35 @@ document.querySelector(".btn-enviar").addEventListener("click", () => {
     return;
   }
 
-  if (email === "" || !email.includes("@")) {
-    Toastify({
-      text: "Por favor, ingresa un correo válido.",
-      duration: 3000,
-      gravity: "top",
-      position: "center",
-      backgroundColor: "#e63946",
-    }).showToast();
-    return;
-  }
-
-  totalElemento.textContent = "¡Cotización enviada con éxito!";
-
-  Swal.fire({
-    title: "¡Cotización Enviada!",
-    text: `Gracias por confiar en eccco™ studio.\nTe responderemos a: ${email}`,
-    icon: "success",
-    confirmButtonText: "Cerrar",
-  });
+Swal.fire({
+  title: "¡Cotización Enviada!",
+  html: `
+    <p><strong>Nombre:</strong> ${nombreCliente}</p>
+    <p><strong>Empresa:</strong> ${empresaCliente || "No indicada"}</p>
+    <p><strong>Dirección:</strong> ${direccionCliente}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Total:</strong> $${total.toLocaleString()} CLP</p>
+  `,
+  icon: "success",
+  confirmButtonText: "Cerrar",
+  background: '#2746DF',
+  color: '#FFFFFF'
+});
 
   confetti();
+  totalElemento.textContent = "¡Cotización enviada con éxito!";
 });
 
 document.querySelector(".btn-cancelar").addEventListener("click", () => {
   total = 0;
   paquetesAgregados = [];
   totalElemento.textContent = "$0 CLP";
+  document.querySelectorAll(".estado-paquete").forEach(el => el.remove());
 
-  const emailInput = document.querySelector("#email");
-  if (emailInput) emailInput.value = "";
+  ["nombreCliente", "empresaCliente", "direccionCliente", "email"].forEach(id => {
+    const input = document.querySelector(`#${id}`);
+    if (input) input.value = "";
+  });
 
   Toastify({
     text: "Cotización cancelada.",
@@ -113,15 +128,16 @@ document.querySelector(".btn-cancelar").addEventListener("click", () => {
   }).showToast();
 });
 
-// ---------------------------------------- //
+// ------------------------------------------------------ //
 
 function cargarPaquetes() {
-  fetch("paquetes.json")
+  fetch("data/paquetes.json")
     .then((res) => {
       if (!res.ok) throw new Error("No se pudo cargar el archivo paquetes.json");
       return res.json();
     })
-    .then((paquetes) => {
+    .then((data) => {
+      paquetes = data;
       const contenedor = document.querySelector(".paquetes");
 
       paquetes.forEach((paquete) => {
@@ -135,6 +151,7 @@ function cargarPaquetes() {
           <p class="valor">$${paquete.precio.toLocaleString()} CLP</p>
           <p class="descripcion">${paquete.descripcion}</p>
           <button class="btn-anadir">Añadir</button>
+          <div class="estado-paquete-container"></div>
         `;
 
         contenedor.appendChild(tarjeta);
@@ -147,7 +164,7 @@ function cargarPaquetes() {
     });
 }
 
-// ---------------------------------------- //
+// ------------------------------------------------------ //
 
 function activarBotones() {
   const botones = document.querySelectorAll(".btn-anadir");
@@ -156,6 +173,7 @@ function activarBotones() {
     boton.addEventListener("click", () => {
       const tarjeta = boton.closest(".tarjeta");
       const id = tarjeta.getAttribute("data-paquete");
+      const estadoContenedor = tarjeta.querySelector(".estado-paquete-container");
 
       if (paquetesAgregados.includes(id)) {
         Toastify({
@@ -168,27 +186,46 @@ function activarBotones() {
         return;
       }
 
-      const valorTexto = tarjeta.querySelector(".valor").textContent;
-      const precio = parseInt(valorTexto.replace(/\D/g, ""), 10);
+      const paquete = paquetes.find(p => p.id === id);
+      if (!paquete) return;
 
-      total += precio;
+      total += paquete.precio;
       paquetesAgregados.push(id);
       totalElemento.textContent = `$${total.toLocaleString()} CLP`;
+
+      const estado = document.createElement("div");
+      estado.classList.add("estado-paquete");
+      estado.innerHTML = `
+        <p class="texto-añadido">Paquete añadido ✅</p>
+        <button data-id="${paquete.id}" class="btn-quitar">Quitar</button>
+      `;
+
+      estadoContenedor.innerHTML = "";
+      estadoContenedor.appendChild(estado);
+
+      estado.querySelector(".btn-quitar").addEventListener("click", (e) => {
+        const id = e.target.getAttribute("data-id");
+        const paquete = paquetes.find(p => p.id === id);
+        if (!paquete) return;
+
+        total -= paquete.precio;
+        paquetesAgregados = paquetesAgregados.filter(pid => pid !== id);
+        totalElemento.textContent = `$${total.toLocaleString()} CLP`;
+        estado.remove();
+      });
     });
   });
 }
 
-cargarPaquetes();
+// ------------------------------------------------------ //
 
-// ---------------------------------------- //
+cargarPaquetes();
 
 const contadorTexto = document.querySelector(".contador-texto");
 let visitas = localStorage.getItem("visitas") || 0;
 visitas++;
 localStorage.setItem("visitas", visitas);
 contadorTexto.textContent = `Visitas totales: ${visitas}`;
-
-// ---------------------------------------- //
 
 btnScroll.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });

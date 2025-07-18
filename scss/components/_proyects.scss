@@ -14,7 +14,14 @@
 .card-proyecto {
   padding: 2rem 1rem;
   text-align: center;
-  width: 280px;
+  /* Eliminar ancho fijo */
+  /* width: 280px; */
+
+  /* Nueva regla para que ocupe espacio responsivamente */
+  flex: 1 1 280px; /* base 280px, crece y encoge según espacio */
+
+  max-width: 320px; /* limita crecimiento máximo */
+
   background-color: rgba(255, 255, 255, 0.08);
   border-radius: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -27,7 +34,7 @@
   img {
     width: 100%;
     border-radius: 16px;
-    object-fit: cover;
+    object-fit: cover; /* mantiene proporción sin deformar */
     margin-bottom: 1rem !important;
   }
 
@@ -55,6 +62,7 @@
     transform: none;
   }
 }
+
 
 .proyecto-detalle-wrapper {
   position: fixed;

@@ -11,11 +11,23 @@ footer {
   .input-mail {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 0;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     margin-bottom: 2rem !important;
+
+    .fila-input {
+      display: flex;
+      gap: 1rem;
+
+      > div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+    }
 
     label {
       font-family: "Manrope";
@@ -94,11 +106,14 @@ footer {
     padding: 1.5rem 1rem 0;
     margin-bottom: 4rem !important;
   }
+
+  footer .input-mail .fila-input {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 580px) {
-    h2 {
-      font-size: 3rem !important;
-    }
-  
+  h2 {
+    font-size: 3rem !important;
+  }
 }
